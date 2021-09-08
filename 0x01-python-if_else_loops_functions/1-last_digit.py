@@ -9,7 +9,7 @@ lastDigit = number % 10
 if sign == 1:
     lastDigit *= -1
     number *= -1
-    print("Last digit of {:d} is ".format(number), end="")
+print("Last digit of {:d} is ".format(number), end="")
 if lastDigit > 5:
     print("{:d} and is greater than 5".format(lastDigit))
 elif lastDigit == 0:
