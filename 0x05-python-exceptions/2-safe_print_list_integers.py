@@ -5,7 +5,7 @@ def safe_print_list_integers(my_list=[], x=0):
     try:
         for i in my_list[:x]:
             if isinstance(i, int):
-                print("{}".format(i), end="")
+                print("{:d}".format(i), end="")
                 printed += 1
         print()
     except:
