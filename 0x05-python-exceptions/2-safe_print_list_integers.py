@@ -1,4 +1,4 @@
-#r/bin/python3y
+#!usr/bin/python3y
 def safe_print_list_integers(my_list=[], x=0):
     i = 0
     printed = 0
