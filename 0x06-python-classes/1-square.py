@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+""" class Square that defines a square size method """
+
 
 class Square:
     """ class Square with private instance attribute size """
