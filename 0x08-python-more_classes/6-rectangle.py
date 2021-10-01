@@ -1,4 +1,4 @@
- #!/usr/bin/python3
+#!/usr/bin/python3
 
 """ class Rectangle that defines a rectangle attributes """
 
@@ -61,5 +61,5 @@ class Rectangle:
         return calculated_str
 
     def __del__(self):
-        Rectangle.number_of_instances -=1
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
