@@ -45,9 +45,10 @@ class Rectangle:
 
     def __str__(self):
         calculated_str = ""
-        if self.__width != 0 and self.__height != 0:
-            calculated_str += "\n".join("#" * self.__width
-                for i in range(self.__height))
+        for idx in range(self.__height):
+            calculated_str += '#' * self.width
+            if idx + 1 < self.__height:
+                calculated_str += '\n'
         return calculated_str
 
     def __repr__(self):
