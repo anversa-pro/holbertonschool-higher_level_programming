@@ -45,6 +45,8 @@ class Rectangle:
 
     def __str__(self):
         calculated_str = ""
+        if self.__height == 0 or self.__width == 0:
+            return calculated_str
         for idx in range(self.__height):
             calculated_str += '#' * self.width
             if idx + 1 < self.__height:
