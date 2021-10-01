@@ -52,6 +52,6 @@ class Rectangle:
         return calculated_str
 
     def __repr__(self):
-        calculated_str = "Rectangle(" + str(self.__width) + ","
+        calculated_str = "Rectangle(" + str(self.__width) + ", "
         calculated_str += str(self.__height) + ")"
         return calculated_str
