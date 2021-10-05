@@ -1,0 +1,14 @@
+======================
+5. Prints a square
+======================
+Function
+========
+Function that prints a square with the character #
+
+Import module:
+======================
+
+    >>> print_square = __import__('4-print_square').print_square
+
+======================
+Should return a square:

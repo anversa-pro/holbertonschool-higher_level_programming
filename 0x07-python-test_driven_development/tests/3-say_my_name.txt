@@ -1,0 +1,100 @@
+======================
+3. Prints a name
+======================
+Function
+========
+Function that divides all elements of a given name with format: My name is <first name> <last name>
+
+Import module:
+======================
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+======================
+Should return a name separated by space:
+	>>> say_my_name("John", "Smith")
+	My name is John Smith
+
+Should return a name and a space:
+	>>> say_my_name("John",)
+	My name is John 
+
+Should return a space and then the last name:
+	>>> say_my_name("", "John")
+	My name is  John
+
+Should return two spaces:
+	>>> say_my_name("")
+	My name is  
+
+Should return the full string:
+	>>> say_my_name("White", "Black & Blue")
+	My name is White Black & Blue
+
+Should return the full string:
+	>>> say_my_name('         ''        ', "       ~      ")
+	My name is                          ~      
+
+Should return the full string:
+	>>> say_my_name(' GIA ', str('D' 'O' 'S'))
+	My name is  GIA  DOS
+
+Should raise a TypeError:
+    >>> say_my_name("", "John", "")
+    Traceback (most recent call last):
+    ...
+    TypeError: say_my_name() takes from 1 to 2 positional arguments but 3 were given
+
+Should raise a TypeError:
+    >>> say_my_name()
+    Traceback (most recent call last):
+    ...
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+Should raise a TypeError:
+    >>> say_my_name(12345, 98765)
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+Should raise a TypeError:
+    >>> say_my_name(12345, 98765)
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+Should raise a TypeError:
+    >>> say_my_name(float('inf'), 98765)
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+Should raise a TypeError:
+    >>> say_my_name(True, False)
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+Should raise a TypeError:
+    >>> say_my_name("White", False)
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
+
+Should raise a TypeError:
+    >>> say_my_name(None, None)
+    Traceback (most recent call last):
+    ...
+    TypeError: first_name must be a string
+
+Should raise a TypeError:
+    >>> say_my_name("TRES", ["DOS", "UNO"])
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
+
+Should raise a TypeError:
+    >>> say_my_name("TRES", (2, 1))
+    Traceback (most recent call last):
+    ...
+    TypeError: last_name must be a string
