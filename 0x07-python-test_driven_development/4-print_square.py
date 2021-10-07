@@ -9,9 +9,9 @@ Return: None
 
 def print_square(size):
     """
-    Module to find the max integer in a list
-    Arg: List
-    Return: Max integer in a given list
+    Module to print an sqare given a number
+    Arg: Siza
+    Return: None
 
     """
     if type(size) is not int:
