@@ -11,7 +11,7 @@ def say_my_name(first_name, last_name=""):
     """
     Module to find print a name
     Arg: List
-    Return: Max integer in a given list
+    Return: None
 
     """
     if type(first_name) is not str:
