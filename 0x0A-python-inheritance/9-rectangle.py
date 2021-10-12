@@ -21,6 +21,7 @@ class Rectangle(BaseGeometry):
 
     def __str__(self):
         """
-        Return the following rectangle description: [Rectangle] <width>/<height>
+        Return the following rectangle description:
+        [Rectangle] <width>/<height>
         """
         return ("[Rectangle] " + str(self.__width) + "/" + str(self.__height))
