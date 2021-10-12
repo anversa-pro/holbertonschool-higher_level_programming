@@ -1,0 +1,34 @@
+==================================================
+ test for integer_validator method of the class BaseGeometry
+==================================================
+
+This function could be raise error in the follow cases
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+creates an instance of the class BaseGeometry
+
+    >>> bg = BaseGeometry()
+
+    >>> bg.area()
+    Traceback (most recent call last):
+    ***
+    Exception: area() is not implemented
+
+    >>> bg.integer_validator("side", "10")
+    Traceback (most recent call last):
+    TypeError: side must be an integer
+
+    >>> bg.integer_validator("side", 10.00)
+    Traceback (most recent call last):
+    TypeError: side must be an integer
+
+    >>> bg.integer_validator("side", 0)
+    Traceback (most recent call last):
+    ValueError: side must be greater than 0
+
+    >>> bg.integer_validator("side", -10)
+    Traceback (most recent call last):
+    ValueError: side must be greater than 0
+
+    >>> bg.integer_validator("side", 10)
