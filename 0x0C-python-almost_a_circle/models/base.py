@@ -44,7 +44,7 @@ class Base:
             else:
                 for i in range(len(list_objs)):
                     jlist.append(cls.to_dictionary(list_objs[i]))
-                f.write(cls.to_json_string(jlist))
+            f.write(cls.to_json_string(jlist))
 
     @classmethod
     def create(cls, **dictionary):
