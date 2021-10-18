@@ -8,6 +8,7 @@ class Rectangle (Base):
     Defines methods of a rectangle that inherits of Base class
 
     """
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """ constructor to set instance attributes """
         super().__init__(id)
@@ -88,8 +89,9 @@ class Rectangle (Base):
 
     def __str__(self):
         """ Modify the stdr output with a specific format """
-        txt = "[Rectangle] ({}) {}/{} - {}/{}"
-        return txt.format(self.id, self.x, self.y, self.width, self.height)
+        txt = "[{}] ({}) {}/{} - {}/{}"
+        return txt.format(type(self).__name__, self.id,
+                          self.x, self.y, self.width, self.height)
 
     def update(self, *args, **kwargs):
         """ Modify instance values according args or kwargs input """

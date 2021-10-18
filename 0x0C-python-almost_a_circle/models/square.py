@@ -8,6 +8,7 @@ class Square (Rectangle):
     Defines methods of a square that inherits of Rectangle class
 
     """
+
     def __init__(self, size, x=0, y=0, id=None):
         """ constructor to set instance attributes """
         super().__init__(size, size, x, y, id)
@@ -25,8 +26,9 @@ class Square (Rectangle):
 
     def __str__(self):
         """ Modify the stdr output with a specific format """
-        txt = "[Rectangle] ({}) {}/{} - {}"
-        return txt.format(self.id, self.x, self.y, self.width)
+        txt = "[{}] ({}) {}/{} - {}"
+        return txt.format(type(self).__name__, self.id,
+                          self.x, self.y, self.width)
 
     def update(self, *args, **kwargs):
         """ Modify instance values according args or kwargs input """
