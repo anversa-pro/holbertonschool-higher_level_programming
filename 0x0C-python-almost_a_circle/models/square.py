@@ -1,27 +1,35 @@
 #!/usr/bin/python3
-""" Class to define a square """
+""" File to define a Square Class """
 from models.rectangle import Rectangle
 
 
 class Square (Rectangle):
-    """ Defines a square representation that inherits of Rectangle class """
+    """
+    Defines methods of a square that inherits of Rectangle class
+
+    """
     def __init__(self, size, x=0, y=0, id=None):
+        """ constructor to set instance attributes """
         super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
+        """ return the instance size value """
         return self.width
 
     @size.setter
     def size(self, value):
+        """ set the instances w & h if validate """
         self.width = value
         self.height = value
 
     def __str__(self):
+        """ Modify the stdr output with a specific format """
         txt = "[Rectangle] ({}) {}/{} - {}"
         return txt.format(self.id, self.x, self.y, self.width)
 
     def update(self, *args, **kwargs):
+        """ Modify instance values according args or kwargs input """
         attributesList = ['id', 'size', 'x', 'y']
         if args is not None and len(args) > 0:
             for i, argument in enumerate(args):
@@ -34,7 +42,7 @@ class Square (Rectangle):
                     setattr(self, key, value)
 
     def to_dictionary(self):
-        """ that returns the dictionary representation of a Square """
+        """ Returns the dictionary representation of a Square """
         traitList = ['id', 'x', 'size', 'y']
         printDictionary = {}
         for trait in traitList:
