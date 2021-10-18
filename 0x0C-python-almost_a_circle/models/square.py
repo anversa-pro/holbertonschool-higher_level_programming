@@ -22,7 +22,7 @@ class Square (Rectangle):
         return txt.format(self.id, self.x, self.y, self.width)
 
     def update(self, *args, **kwargs):
-        attributesList = ['id', 'size','x', 'y']
+        attributesList = ['id', 'size', 'x', 'y']
         if args is not None and len(args) > 0:
             for i, argument in enumerate(args):
                 if i < len(attributesList):
@@ -32,3 +32,11 @@ class Square (Rectangle):
             for key, value in kwargs.items():
                 if key in attributesList:
                     setattr(self, key, value)
+
+    def to_dictionary(self):
+        """ that returns the dictionary representation of a Square """
+        traitList = ['id', 'x', 'size', 'y']
+        printDictionary = {}
+        for trait in traitList:
+            printDictionary[trait] = getattr(self, trait)
+        return printDictionary
