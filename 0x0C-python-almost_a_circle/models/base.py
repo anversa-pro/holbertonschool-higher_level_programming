@@ -38,7 +38,7 @@ class Base:
         """ save a list of objects serialized in a file"""
         jlist = []
         fileName = str(cls.__name__) + ".json"
-        with open(fileName, "w", encoding = "utf-8") as f:
+        with open(fileName, "w", encoding="utf-8") as f:
             if list_objs is None:
                 f.write(jlist)
             else:
@@ -46,14 +46,12 @@ class Base:
                     jlist.append(cls.to_dictionary(list_objs[i]))
                 f.write(cls.to_json_string(jlist))
 
-
     @classmethod
     def create(cls, **dictionary):
         """ returns an instance with all attributes already set """
         rDummy = cls(10, 10)
         rDummy.update(**dictionary)
         return rDummy
-
 
     @classmethod
     def load_from_file(cls):
@@ -64,7 +62,7 @@ class Base:
         if os.path.exists(fileName) is False:
             return jlistObj
 
-        with open(fileName, "r", encoding = "utf-8") as f:
+        with open(fileName, "r", encoding="utf-8") as f:
             jlist = cls.from_json_string(f.read())
             for i in jlist:
                     jlistObj.append(cls.create(**i))
