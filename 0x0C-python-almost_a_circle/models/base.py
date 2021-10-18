@@ -37,14 +37,14 @@ class Base:
     def save_to_file(cls, list_objs):
         """ save a list of objects serialized in a file"""
         jlist = []
-        fileName = str(cls.__name__) + ".json"
-        with open(fileName, "w", encoding="utf-8") as f:
-            if list_objs is None:
-                f.write(jlist)
-            else:
-                for i in range(len(list_objs)):
-                    jlist.append(cls.to_dictionary(list_objs[i]))
-            f.write(cls.to_json_string(jlist))
+        fileName = str(cls.__name__)+".json"
+
+        if list_objs is None:
+            with open(fileName, "w", encoding="utf-8") as f:
+                f.write(cls.to_json_string(jlist))
+        else:
+            for i in range(len(list_objs)):
+                jlist.append(cls.to_dictionary(list_objs[i]))
 
     @classmethod
     def create(cls, **dictionary):
