@@ -2,10 +2,29 @@
 """ Module for test the Rectangle class """
 import unittest
 from models.rectangle import Rectangle
+from models.base import Base
+from unittest.case import skip
+from io import StringIO
+from unittest.mock import patch
 
 
 class TestRectangle(unittest.TestCase):
-    "Testing suite for Rectangle class"
+    """Testing suite for Rectangle class"""
+    def setUp(self):
+        """reset the id objects number"""
+        Base.resetNumber()
+
+    def test_create_id(self):
+        """ check if new id's are set correctly """
+        r0 = Rectangle(1, 3)
+        self.assertEqual(r0.id, 1)
+        r1 = Rectangle(2, 4)
+        self.assertEqual(r1.id, 2)
+        r2 = Rectangle(5, 7, 0, 0, 10)
+        self.assertEqual(r2.id, 10)
+        r3 = Rectangle(6, 8)
+        self.assertEqual(r3.id, 3)
+
     def test_dimensions(self):
         """ check if w & h dimensions are validate """
 
@@ -37,6 +56,42 @@ class TestRectangle(unittest.TestCase):
 
         self.assertRaises(ValueError, Rectangle, 10, 0)
         self.assertRaises(ValueError, Rectangle, 0, 10)
+
+    def test_position(self):
+        """ check if the position x y y are validates and sets correctly """
+
+        r0 = Rectangle(10, 2)
+        self.assertEqual(r0.x, 0)
+        self.assertEqual(r0.y, 0)
+
+        r0 = Rectangle(10, 2, 10)
+        self.assertEqual(r0.x, 10)
+        self.assertEqual(r0.y, 0)
+
+        r0 = Rectangle(10, 2, 10, 2)
+        self.assertEqual(r0.x, 10)
+        self.assertEqual(r0.y, 2)
+
+        r0.x = 13
+        r0.y = 8
+        self.assertEqual(r0.x, 13)
+        self.assertEqual(r0.y, 8)
+
+        self.assertRaises(TypeError, Rectangle, 10, 10, "e", 10)
+        self.assertRaises(TypeError, Rectangle, 10, 10, 0, "10")
+
+        self.assertRaises(ValueError, Rectangle, 10, 10, -8, 10)
+        self.assertRaises(ValueError, Rectangle, 10, 10, 10, -1)
+
+    def test_area(self):
+        """ check if the area is calculate correctly """
+
+        r0 = Rectangle(2, 3, 4, 5)
+        self.assertEqual(r0.area(), 6)
+        r0.width = 1
+        self.assertEqual(r0.area(), 3)
+        r0.height = 1
+        self.assertEqual(r0.area(), 1)
 
     def test_update_args(self):
         """ check the update function with 'no-keyword' arguments """
