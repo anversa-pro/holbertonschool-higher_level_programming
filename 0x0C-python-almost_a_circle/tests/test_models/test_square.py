@@ -2,10 +2,29 @@
 """ Module for test the Square class """
 import unittest
 from models.square import Square
+from models.base import Base
+from unittest.case import skip
+from io import StringIO
+from unittest.mock import patch
 
 
 class TestSquare(unittest.TestCase):
     "Testing suite for Square class"
+    def setUp(self):
+        """reset the id objects number"""
+        Base.resetNumber()
+
+    def test_create_id(self):
+        """ check if new id's are set correctly """
+        s0 = Square(1)
+        self.assertEqual(s0.id, 1)
+        s1 = Square(3)
+        self.assertEqual(s1.id, 2)
+        s2 = Square(5, 7, 0, 0)
+        self.assertEqual(s2.id, 0)
+        s3 = Square(6, 8)
+        self.assertEqual(s3.id, 3)
+
     def test_dimensions(self):
         """ check if w & h dimensions are validate """
 
@@ -36,6 +55,15 @@ class TestSquare(unittest.TestCase):
         self.assertRaises(ValueError, Square, 5, -10)
 
         self.assertRaises(ValueError, Square, 0)
+
+    def test_str(self):
+        """ check if the printable representation is correct """
+
+        s0 = Square(4, 2, 1, 12)
+        self.assertEqual(str(s0), '[Square] (12) 2/1 - 4')
+        s1 = Square(5)
+        s1.id = 16
+        self.assertEqual(str(s1), '[Square] (16) 0/0 - 5')
 
     def test_update_args(self):
         """ check the update function with 'no-keyword' arguments """
@@ -106,6 +134,13 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(rUpdateKarg.area(), 9)
         self.assertEqual(rUpdateKarg.x, 19)
         self.assertEqual(rUpdateKarg.y, 14)
+
+    def test_to_dict(self):
+        """ check if to_dictionary returns the dict correctly """
+        s0 = Square(4, 8, 3, 12)
+        expect_out = {'id': 12, 'size': 4, 'x': 8, 'y': 3}
+        self.assertEqual(s0.to_dictionary(), expect_out)
+
 
 if __name__ == "__main__":
     unittest.main()

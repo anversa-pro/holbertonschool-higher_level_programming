@@ -10,6 +10,7 @@ from unittest.mock import patch
 
 class TestRectangle(unittest.TestCase):
     """Testing suite for Rectangle class"""
+
     def setUp(self):
         """reset the id objects number"""
         Base.resetNumber()
@@ -93,6 +94,57 @@ class TestRectangle(unittest.TestCase):
         r0.height = 1
         self.assertEqual(r0.area(), 1)
 
+    def test_str(self):
+        """ check if the printable representation is correct """
+
+        r0 = Rectangle(4, 6, 2, 1, 12)
+        self.assertEqual(str(r0), '[Rectangle] (12) 2/1 - 4/6')
+        r1 = Rectangle(5, 5)
+        r1.id = 16
+        self.assertEqual(str(r1), '[Rectangle] (16) 0/0 - 5/5')
+
+    def test_display(self):
+        """ check if the display function shows the right size of rectangle """
+        rDisplay = Rectangle(1, 1)
+        expected_out = '#\n'
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            rDisplay.display()
+            self.assertEqual(fake_out.getvalue(), expected_out)
+
+        rDisplay.width = 2
+        rDisplay.height = 3
+        expected_out = '##\n##\n##\n'
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            rDisplay.display()
+            self.assertEqual(fake_out.getvalue(), expected_out)
+        rDisplay.x = 1
+        rDisplay.y = 3
+        expected_out = '\n\n\n ##\n ##\n ##\n'
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            rDisplay.display()
+            self.assertEqual(fake_out.getvalue(), expected_out)
+
+        rDisplay.x = 1
+        rDisplay.y = 0
+        expected_out = ' ##\n ##\n ##\n'
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            rDisplay.display()
+            self.assertEqual(fake_out.getvalue(), expected_out)
+
+        rDisplay.x = 4
+        rDisplay.y = 1
+        rDisplay.width = 1
+        rDisplay.height = 1
+        expected_out = '\n    #\n'
+
+        with patch('sys.stdout', new=StringIO()) as fake_out:
+            rDisplay.display()
+            self.assertEqual(fake_out.getvalue(), expected_out)
+
     def test_update_args(self):
         """ check the update function with 'no-keyword' arguments """
 
@@ -137,7 +189,7 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             rUpdateArg.update(10, 5, 0, 0, 0)
-        
+
         with self.assertRaises(ValueError):
             rUpdateArg.update(10, 0, 5, 0, 0)
 
@@ -167,6 +219,13 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rUpdateKarg.area(), 30)
         self.assertEqual(rUpdateKarg.x, 19)
         self.assertEqual(rUpdateKarg.y, 14)
+
+    def test_to_dict(self):
+        """ check if to_dictionary returns the dict as exected """
+        r0 = Rectangle(4, 6, 8, 3, 12)
+        expect_out = {'id': 12, 'width': 4, 'height': 6, 'x': 8, 'y': 3}
+        self.assertEqual(r0.to_dictionary(), expect_out)
+
 
 if __name__ == "__main__":
     unittest.main()
