@@ -3,13 +3,17 @@
 Script that computes and prints a factorial
 */
 const factorialNumber = parseInt(process.argv[2]);
-let factorialResult = 1;
 
 if (!factorialNumber) {
-  console.log(factorialResult);
+  console.log(1);
 } else {
-  for (let i = factorialNumber; i > 1; i--) {
-    factorialResult *= i;
+  factorialCalculation(factorialNumber);
+}
+
+function factorialCalculation (a) {
+  let calculation = 1;
+  for (let i = a; i > 1; i--) {
+    calculation *= i;
   }
-  console.log(factorialResult);
+  console.log(calculation);
 }
