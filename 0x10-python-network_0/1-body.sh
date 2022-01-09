@@ -1,3 +1,3 @@
 #!/bin/bash
-# Bash script that takes in a URL, sends a request to that URL, and displays the size of the body of the response
-curl -sf "$1"
+# Bash script that takes in a URL, sends a GET request to the URL, and displays the body of the response with a given condition 
+curl -sfL "$1"
