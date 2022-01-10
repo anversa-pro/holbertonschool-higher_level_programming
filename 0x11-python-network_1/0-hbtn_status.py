@@ -1,16 +1,14 @@
 #!/usr/bin/python3
-""" This module contains a script to fetch a URL """
+"""
+Script that fetches https://intranet.hbtn.io/status
+and displays status information of the body response
+"""
 import urllib.request
 
 
 if __name__ == "__main__":
-    """
-    This script fetches a domain using urllib 
-    and displays the body of the response
-    """
-    with urllib.request.urlopen('https://intranet.hbtn.io/status') as request:
-        information = request.read()
-        print("Body response:")
-        print("\t- type:", type(information))
-        print("\t- content:", information)
-        print("\t- utf8 content:", str(information)[2:-1])
+    with urllib.request.urlopen('https://intranet.hbtn.io/status') as response:
+        statusInfo = response.read()
+
+    print("Body response:\n\t- type: {}\n\t- content: {}\n\t- utf8 content: {}"
+          .format(type(statusInfo), statusInfo, str(statusInfo)[2:-1]))
