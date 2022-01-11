@@ -10,12 +10,11 @@ import sys
 
 if __name__ == "__main__":
     """
-    This script fetches a URL with an urllib
-    and displays info of the status
+    This script fetches a URL
     """
     URL = sys.argv[1]
     response = requests.get(URL)
     if response.status_code >= 400:
         print("Error code: {}".format(response.status_code))
-    elif:
+    else:
         print(response.text)
