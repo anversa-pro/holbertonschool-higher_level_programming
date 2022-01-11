@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" script that takes in a URL, sends a request to the URL and displays the body 
-of the response (decoded in utf-8) and an error message if needed
+""" script that takes in a URL, sends a request to the URL and displays the
+body of the response (decoded in utf-8) and an error message if needed
 """
 import urllib.request
 import urllib.parse
