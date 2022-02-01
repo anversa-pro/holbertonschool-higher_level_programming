@@ -7,8 +7,7 @@ const userCompletedTasks = {};
 request(apiUrl, function (error, response, body) {
   if (error) {
     console.log(error);
-  }
-  else {
+  } else {
     const result = JSON.parse(body);
     for (const user of result) {
       if (user.completed === true) {
