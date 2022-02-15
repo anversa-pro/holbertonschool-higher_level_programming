@@ -1,3 +1,6 @@
-$.getJSON('https://swapi.co/api/people/5/?format=json', function (data) {
-  $('#character').html(data.name);
-});
+ 
+$.get('https://swapi-api.hbtn.io/api/people/5/?format=json', (data, textStatus) => {
+  if (textStatus === 'success') {
+    $('#character').html(data.name);
+  }
+})
